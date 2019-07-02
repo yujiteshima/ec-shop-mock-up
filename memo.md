@@ -112,8 +112,9 @@ module.exports = {
   }
 }
 ```
+Logo.vueにでも記述して、当たっているか確認しておく。
 ```html
-  <i class="fas fa-lock"></i>
+  <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
 ```
 
 ### sass導入
@@ -125,8 +126,6 @@ $ yarn add node-sass sass-loader style-loader
 ### 初期設定コメント
 
 ディレクトリの構成は、好みの問題や他にも最適解あるのかもしれないが、Nuxt ビギナーズブックで提示された、appフォルダに集約する方法を採用する。テストファイルを同じディレクトリ構成で作り、可読性を高めたり、単純に自分がこのディレクトリ構成に慣れてきたという為にこのディレクトリ構成でいく。
-
-Pugについては今回は採用しない事とする。 CSSフレームワークのBulmaが自分自身の初採用という事で、ドキュメントと見比べながらの開発となる事が考えられる為。慣れてこればPugで書くほうがスッキリと書けるようになるだろう。
 
 ### Git に FirstCommit、　FirstPushしておく。
 

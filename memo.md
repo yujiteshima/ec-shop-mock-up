@@ -159,6 +159,7 @@ $ git checkout -b create-TheHeader
 3. ついでにLogo.spec.vueもtest/componentsディレクトリに移動しておく。
 
 ### TheHeader.spec.js作成
+テストファーストで書く。
 リンクが存在するかどうかのチェック
 ```js
 import { mount, createLocalVue, RouterLinkStub } from '@vue/test-utils'
@@ -175,25 +176,134 @@ describe('components/TheHeader.vue', () => {
       }
     })
     expect(wrapper.find(RouterLinkStub).props().to).toBe('/')
-  }),
-  test('新規登録Pageへのリンクが存在する', () => {
-    const wrapper = mount(TheHeader, {
-      localVue,
-      stubs: {
-        NuxtLink: RouterLinkStub
-      }
-    })
-    expect(wrapper.find(RouterLinkStub).props().to).toBe('/new')
-  }),
-  test('ログインPageへのリンクが存在する', () => {
-    const wrapper = mount(TheHeader, {
-      localVue,
-      stubs: {
-        NuxtLink: RouterLinkStub
-      }
-    })
-    expect(wrapper.find(RouterLinkStub).props().to).toBe('/login')
-  }),
+  })
 })
 
 ```
+
+```
+$ yarn test
+>> Failed to mount component: template or render function not defined.
+>> [vue-test-utils]: find did not return Component, cannot call props() on empty Wrapper
+```
+抜粋だがTheHeader.vueが空っぽであるのでエラーが出た。
+
+
+### TheHeader.vueを記述していく。
+
+```html
+<template>
+  <div>
+    <b-navbar toggleable="lg" type="dark" variant="secondary">
+      <b-navbar-brand>
+        <nuxt-link to="/">EC-SHOP-MOCK-UP</nuxt-link>
+      </b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <!-- <b-nav-item href="#">Link</b-nav-item>
+          <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
+          <b-nav-item>
+            <b-nav-form>
+              <b-form-select
+                v-model="selected"
+                :options="options"
+                size="sm"
+                class="select-form"
+              >
+              </b-form-select>
+              <b-form-input
+                v-model="keyword"
+                size="sm"
+                placeholder="Search"
+              ></b-form-input>
+              <b-button
+                size="sm"
+                placeholder="Search"
+                variant="success"
+                @click="search"
+              >
+                Search
+              </b-button>
+            </b-nav-form>
+          </b-nav-item>
+        </b-navbar-nav>
+
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-navbar-nav class="ml-auto mr-5">
+            <b-nav-item v-if="!isLogin">
+              <nuxt-link to="/auth">Login/SignUp</nuxt-link>
+            </b-nav-item>
+            <b-nav-item v-if="isLogin">
+              <nuxt-link to="/auth">
+                Logout
+              </nuxt-link>
+            </b-nav-item>
+            <b-nav-item>
+              <nuxt-link to="/cart">
+                <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
+              </nuxt-link>
+            </b-nav-item>
+          </b-navbar-nav>
+          <b-nav-item-dropdown text="Lang" right>
+            <b-dropdown-item href="#">EN</b-dropdown-item>
+            <b-dropdown-item href="#">ES</b-dropdown-item>
+            <b-dropdown-item href="#">RU</b-dropdown-item>
+            <b-dropdown-item href="#">FA</b-dropdown-item>
+          </b-nav-item-dropdown>
+
+          <b-nav-item-dropdown right>
+            <!-- Using 'button-content' slot -->
+            <template slot="button-content"
+              ><em>User</em></template
+            >
+            <b-dropdown-item href="#">Profile</b-dropdown-item>
+            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      selected: null,
+      keyword: '',
+      options: [
+        { value: null, text: 'All Item' },
+        { value: 'typeA', text: 'A' },
+        { value: 'typeB', text: 'B' },
+        { value: 'typeC', text: 'C' },
+        { value: 'typeD', text: 'D' }
+      ],
+      isLogin: true
+    }
+  },
+  methods: {
+    search() {
+      console.log('this is search')
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+a {
+  color: bisque;
+  text-decoration: none;
+}
+</style>
+```
+
+### The Header.vue作成の際の気付きポイント
+
+- nuxt-linkの中のtextにcssを効かす為には、ローダーを通した後の```a```タグを指定しなくてはならない。
+- ここでのメソッドとstateはモックなので、Storeを作成したら連携させる。
+- 単体テストで何をテストしなくてはならないのかを考えなくてはならない。
+

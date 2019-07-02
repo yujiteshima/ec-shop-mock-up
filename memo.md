@@ -307,3 +307,28 @@ a {
 - ここでのメソッドとstateはモックなので、Storeを作成したら連携させる。
 - 単体テストで何をテストしなくてはならないのかを考えなくてはならない。
 
+### TheHeader.vueを作成しなので、Gitのブランチを結合させる。
+
+```
+$ git checkout master
+
+$ git merge create-TheHeader
+```
+
+## default.vueの作成
+
+### buranchを作成
+```
+$ git checkout -b create-top-page
+```
+
+上下左右中央揃えにするクラスセット
+
+```html
+class=" d-flex align-items-center justify-content-center"
+```
+colmの中のtextを縦並びにしたい時に、flexボックスを使ってしまうと、```br```を使っても横に並んでしまう。この際は、```flex-column```を使う。
+
+```html
+class = "d-flex flex-column align-items-center justify-content-center"
+```

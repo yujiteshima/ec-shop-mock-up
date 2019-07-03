@@ -1,14 +1,17 @@
 <template>
   <div>
     <TheHeader />
+    <TitleHeader />
     <nuxt />
   </div>
 </template>
 <script>
 import TheHeader from '~/components/TheHeader.vue'
+import TitleHeader from '~/components/TitleHeader.vue'
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    TitleHeader
   }
 }
 </script>

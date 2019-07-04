@@ -3,15 +3,18 @@
     <TheHeader />
     <TitleHeader />
     <nuxt />
+    <Footer />
   </div>
 </template>
 <script>
 import TheHeader from '~/components/TheHeader.vue'
 import TitleHeader from '~/components/TitleHeader.vue'
+import Footer from '~/components/Footer.vue'
 export default {
   components: {
     TheHeader,
-    TitleHeader
+    TitleHeader,
+    Footer
   }
 }
 </script>

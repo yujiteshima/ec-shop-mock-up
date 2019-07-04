@@ -1,5 +1,8 @@
 <template>
   <b-container>
+    <div>
+      <div v-scroll="handleScroll" class="box">scroll hock</div>
+    </div>
     <b-row class="top-row mx-1 row-bg">
       <b-col cols="12">
         <!-- <div
@@ -66,14 +69,14 @@
       </b-col>
     </b-row>
     <b-row class="about-row m-1 row-bg2">
-      <b-col sm="6">
+      <b-col md="6">
         <div
           class="bg-success content-col m-1 d-flex align-items-center justify-content-center"
         >
           おすすめとかのテキスト
         </div>
       </b-col>
-      <b-col sm="6">
+      <b-col md="6">
         <div
           class="bg-info content-col m-1 d-flex align-items-center justify-content-center"
         >
@@ -84,14 +87,14 @@
       </b-col>
     </b-row>
     <b-row class="topics-row m-1 row-bg">
-      <b-col sm="12">
+      <b-col md="12">
         <div
           class="bg-secondary topic-header m-1 d-flex align-items-center justify-content-center"
         >
           TopicsのHeader
         </div>
       </b-col>
-      <b-col sm="6">
+      <b-col md="6">
         <div
           class="bg-success content-col m-1 d-flex align-items-center justify-content-center"
         >
@@ -102,7 +105,7 @@
 
         Topicsのテキスト
       </b-col>
-      <b-col sm="6">
+      <b-col md="6">
         <div
           class="bg-info content-col m-1 d-flex align-items-center justify-content-center"
         >
@@ -115,7 +118,7 @@
     </b-row>
 
     <b-row class="new-row m-1 row-bg2">
-      <b-col cols="6" sm="3">
+      <b-col cols="6" md="3">
         <div
           class="bg-success content-col m-1 d-flex flex-column align-items-center justify-content-center"
         >
@@ -125,7 +128,7 @@
           </div>
         </div>
       </b-col>
-      <b-col cols="6" sm="3">
+      <b-col cols="6" md="3">
         <div
           class="bg-info content-col m-1 d-flex align-items-center justify-content-center"
         >
@@ -133,7 +136,7 @@
         </div>
         <div>新商品名 ¥価格</div>
       </b-col>
-      <b-col cols="6" sm="3">
+      <b-col cols="6" md="3">
         <div
           class="bg-primary content-col m-1 d-flex align-items-center justify-content-center"
         >
@@ -141,7 +144,7 @@
         </div>
         <div>新商品名 ¥価格</div>
       </b-col>
-      <b-col cols="6" sm="3">
+      <b-col cols="6" md="3">
         <div
           class="bg-warning content-col m-1 d-flex align-items-center justify-content-center"
         >
@@ -152,28 +155,28 @@
     </b-row>
 
     <b-row class="category-row m-1 row-bg">
-      <b-col sm="12">
+      <b-col md="12">
         <div
           class="bg-success m-1 d-flex align-items-center justify-content-center"
         >
           新商品のテキスト
         </div>
       </b-col>
-      <b-col sm="4">
+      <b-col md="4">
         <div
           class="bg-info content-col m-1 d-flex align-items-center justify-content-center"
         >
           <nuxt-link to="#">カテゴリのイメージ</nuxt-link>
         </div>
       </b-col>
-      <b-col sm="4">
+      <b-col md="4">
         <div
           class="bg-primary content-col m-1 d-flex align-items-center justify-content-center"
         >
           <nuxt-link to="#">カテゴリのイメージ</nuxt-link>
         </div>
       </b-col>
-      <b-col sm="4">
+      <b-col md="4">
         <div
           class="bg-warning content-col m-1 d-flex align-items-center justify-content-center"
         >
@@ -198,6 +201,16 @@ export default {
     },
     onSlideEnd(slide) {
       this.sliding = false
+    },
+    handleScroll: function(evt, el) {
+      console.log(window.scrollY)
+      if (window.scrollY > 50) {
+        el.setAttribute(
+          'style',
+          'opacity: 1; transform: translate3d(0, -10px, 0)'
+        )
+      }
+      return window.scrollY > 100
     }
   }
 }
@@ -245,5 +258,10 @@ a {
   .content-col {
     height: 30vh;
   }
+}
+
+.box {
+  opacity: 0;
+  transition: 1.5s all cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 </style>

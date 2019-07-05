@@ -526,3 +526,55 @@ $ git merge create-top-page
 ```
 $ git checkout -b create-Jumbotron
 ```
+
+
+## Firebase
+### FirebaseSDK
+```
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBBr9TUwA6Pq_uzNKQYcNaBxc7Ge8ImepY",
+    authDomain: "ec-shop-mock-up.firebaseapp.com",
+    databaseURL: "https://ec-shop-mock-up.firebaseio.com",
+    projectId: "ec-shop-mock-up",
+    storageBucket: "ec-shop-mock-up.appspot.com",
+    messagingSenderId: "1049935503390",
+    appId: "1:1049935503390:web:b23c9bd07a6e6799"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+```
+
+```
+$ yarn add firebase firebaseui
+```
+
+```js
+import firebase from 'firebase'
+
+if (!firebase.apps.length) {
+  firebase.initializeApp({
+    apiKey: "AIzaSyBBr9TUwA6Pq_uzNKQYcNaBxc7Ge8ImepY",
+    authDomain: "ec-shop-mock-up.firebaseapp.com",
+    databaseURL: "https://ec-shop-mock-up.firebaseio.com",
+    projectId: "ec-shop-mock-up",
+    storageBucket: "ec-shop-mock-up.appspot.com",
+    messagingSenderId: "1049935503390",
+    appId: "1:1049935503390:web:b23c9bd07a6e6799"
+  })
+}
+
+export default firebase
+```
+
+```
+$ yarn add firebaseui-ja --save
+```

@@ -11,7 +11,7 @@
         <b-collapse id="nav-collapse" is-nav>
           <!-- <b-navbar-nav> -->
           <!-- <b-nav-item href="#">Link</b-nav-item>
-          <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
+          <b-nav-item href="#" disabled>Disabled</b-nav-item>-->
           <!-- <b-nav-item> -->
           <b-nav-form>
             <b-form-select
@@ -19,8 +19,7 @@
               :options="options"
               size="sm"
               class="select-form"
-            >
-            </b-form-select>
+            ></b-form-select>
             <b-form-input
               v-model="keyword"
               size="sm"
@@ -31,9 +30,8 @@
               placeholder="Search"
               variant="success"
               @click="search"
+              >Search</b-button
             >
-              Search
-            </b-button>
           </b-nav-form>
           <!-- </b-nav-item> -->
           <!-- </b-navbar-nav> -->
@@ -42,12 +40,10 @@
           <b-navbar-nav class="ml-auto">
             <!-- <b-navbar-nav class="ml-auto mr-5"> -->
             <b-nav-item v-if="!isLogin">
-              <nuxt-link to="/auth">Login/SignUp</nuxt-link>
+              <nuxt-link to="/login">Login/SignUp</nuxt-link>
             </b-nav-item>
             <b-nav-item v-if="isLogin">
-              <nuxt-link to="/auth">
-                Logout
-              </nuxt-link>
+              <a @click="logout">Logout</a>
             </b-nav-item>
             <b-nav-item>
               <nuxt-link to="/cart">
@@ -65,9 +61,9 @@
 
             <b-nav-item-dropdown right>
               <!-- Using 'button-content' slot -->
-              <template slot="button-content"
-                ><em>User</em></template
-              >
+              <template slot="button-content">
+                <em>User</em>
+              </template>
               <b-dropdown-item href="#">Profile</b-dropdown-item>
               <b-dropdown-item href="#">Sign Out</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -91,13 +87,23 @@ export default {
         { value: 'typeC', text: 'C' },
         { value: 'typeD', text: 'D' }
       ],
-      isLogin: true,
+      // isLogin: true,
       cartItemCount: 3
+    }
+  },
+  computed: {
+    isLogin() {
+      return this.$store.state.isLogIn
     }
   },
   methods: {
     search() {
       console.log('this is search')
+    },
+    logout() {
+      if (confirm('Logoutしてよろしですか')) {
+        this.$store.dispatch('logout')
+      }
     }
   }
 }

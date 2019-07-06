@@ -24,13 +24,15 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "cross-env": "^5.2.0",
     "firebase": "^6.2.4",
+    "firebase-admin": "^8.2.0",
     "firebaseui": "^4.0.0",
     "firebaseui-ja": "^1.0.0",
     "node-sass": "^4.12.0",
     "nuxt": "^2.4.0",
     "nuxt-fontawesome": "^0.4.0",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

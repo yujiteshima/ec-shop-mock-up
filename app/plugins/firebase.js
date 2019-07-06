@@ -1,6 +1,6 @@
 // import firebase from 'firebase'
 // import firebaseui from 'firebaseui-ja'
-import firebase from 'firebase/app'
+import firebase from 'firebase'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/database'
@@ -29,4 +29,11 @@ export const authProviders = {
 export const auth = firebase.auth()
 export const db = firebase.database()
 export const store = firebase.firestore()
+export default firebase
+
+// export default (context, inject) => {
+//   inject('firebase', firebase)
+//   inject('firestore', firebase.firestore())
+//   inject('auth', firebase.auth())
+// }
 // export default firebase

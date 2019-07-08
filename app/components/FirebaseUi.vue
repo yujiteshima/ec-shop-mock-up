@@ -36,7 +36,7 @@ export default {
           ],
         // signInが成功した時のジャンプ先
         // どこから来たかでジャンプ先を変えたり出来るのか？？？？？？？？？？？？？？？
-        signInSuccessUrl: '/cart',
+        signInSuccessUrl: '/',
         // 規約ページへのジャンプ先を設定出来る。
         tosUrl: '/tos',
         // プライバシーポリシーへのジャンプ先を設定出来る。

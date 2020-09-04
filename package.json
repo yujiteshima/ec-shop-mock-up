@@ -27,7 +27,7 @@
     "firebase-admin": "^8.2.0",
     "firebaseui": "^4.0.0",
     "firebaseui-ja": "^1.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.4.0",
     "nuxt-fontawesome": "^0.4.0",
     "sass-loader": "^7.1.0",
